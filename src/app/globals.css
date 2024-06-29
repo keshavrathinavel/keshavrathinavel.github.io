@@ -16,7 +16,7 @@
 
 body {
     color: rgb(var(--foreground-rgb));
-    background-color: bisque;
+    background-color: #1f1f29;
 }
 
 @layer utilities {
