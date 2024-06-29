@@ -34,11 +34,11 @@ export default function Terminal() {
                             className='text-green-300'>~</span> learn@about.keshav$ <span
                             className='text-white font-normal'>{output.command}</span></span>
                         <div className='px-4 py-2'>
-                            {Array.isArray(output.result) ? (
+                            <pre>{Array.isArray(output.result) ? (
                                 output.result.map((line, idx) => <div key={idx}>{line}</div>)
                             ) : (
                                 <div>{output.result}</div>
-                            )}
+                            )}</pre>
                         </div>
                     </div>
                 ))}
