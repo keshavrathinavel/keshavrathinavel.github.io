@@ -15,6 +15,12 @@ export default function Terminal() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const result = handleCommand(input)
+
+        if (result === null) {
+            setInput('')
+            return setOutput([])
+        }
+
         setOutput((prevOutput) => [...prevOutput, {command: input, result}])
         setInput('')
     }

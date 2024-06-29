@@ -8,6 +8,8 @@ export default function handleCommand(command: string) {
             return help()
         case 'about':
             return about()
+        case 'clear':
+            return null
         default:
             return ['Hmmm, no idea. Type "help" to see a list of available commands']
     }
