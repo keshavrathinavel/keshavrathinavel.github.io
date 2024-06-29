@@ -1,40 +1,49 @@
 "use client"
 
-import { useState, FormEvent } from 'react'
+import React, { useState } from "react";
 import handleCommand from "@/lib/handleCommand";
 
+interface CommandOutput {
+    command: string
+    result: string | string[]
+}
 
 export default function Terminal() {
-    const [output, setOutput] = useState<string>('')
     const [input, setInput] = useState<string>('')
+    const [output, setOutput] = useState<CommandOutput[]>([])
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const result = handleCommand(input)
-
-        if (Array.isArray(result)) {
-            setOutput((prevOutput) => `${prevOutput}\n$${input}\n${result.join('\n')}`)
-        } else {
-            setOutput((prevOutput) => `${prevOutput}\n$${input}\n${result}`)
-        }
+        setOutput((prevOutput) => [...prevOutput, {command: input, result}])
         setInput('')
     }
 
     return (
-        <div className='bg-transparent text-black'>
+        <div className='ml-2'>
             <div>
-                {output.split('\n').map((line, index) => (
-                    <div key={index}>{line}</div>
+                {output.map((output, index) => (
+                    <div key={index}>
+                        <span className='text-pink-300 font-semibold'><span
+                            className='text-green-300'>~</span> learn@about.keshav$ <span
+                            className='text-white font-normal'>{output.command}</span></span>
+                        <div>
+                            {Array.isArray(output.result) ? (
+                                output.result.map((line, idx) => <div key={idx}>{line}</div>)
+                            ) : (
+                                <div>{output.result}</div>
+                            )}
+                        </div>
+                    </div>
                 ))}
             </div>
             <form onSubmit={handleSubmit}>
-                <span>$ </span>
-                <input
-                    className="bg-transparent"
-                    type='text'
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                />
+                <span className='text-pink-300 font-semibold'><span className='text-green-300'>~</span> learn@about.keshav$ </span>
+                <input type='text'
+                       className='bg-transparent focus:outline-none text-white'
+                       value={input}
+                       onChange={(e) => setInput(e.target.value)}
+                       autoFocus/>
             </form>
         </div>
     )
