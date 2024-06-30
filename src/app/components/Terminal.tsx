@@ -21,7 +21,10 @@ export default function Terminal() {
 
         if (result === null) {
             setInput('')
-            return setOutput([])
+            setOutput([])
+            setCurrentLineIndex(0)
+            setCurrentOutputIndex(0)
+            return
         }
 
         setOutput((prevOutput) => [...prevOutput, {command: input, result}])
