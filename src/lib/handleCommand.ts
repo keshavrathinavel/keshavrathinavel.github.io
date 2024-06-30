@@ -13,6 +13,8 @@ export default function handleCommand(command: string) {
             return null
         case 'banner':
             return banner()
+        case 'welcome':
+            return banner()
         default:
             return ['Hmmm, no idea what that does. Type "help" to see a list of available commands']
     }

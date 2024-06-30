@@ -15,6 +15,11 @@ export default function Terminal() {
     const [currentLineIndex, setCurrentLineIndex] = useState<number>(0)
     const [currentOutputIndex, setCurrentOutputIndex] = useState<number>(0)
 
+    useEffect(() => {
+        const bannerResult = handleCommand('welcome')
+        setOutput([{ command: 'welcome', result: bannerResult as string[]}])
+    }, []);
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const result = handleCommand(input)
