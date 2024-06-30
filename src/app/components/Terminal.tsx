@@ -5,7 +5,7 @@ import handleCommand from "@/lib/handleCommand";
 import { TypeAnimation } from "react-type-animation";
 
 interface CommandOutput {
-    command: string
+    command: string | null
     result: string | string[]
 }
 
@@ -16,8 +16,8 @@ export default function Terminal() {
     const [currentOutputIndex, setCurrentOutputIndex] = useState<number>(0)
 
     useEffect(() => {
-        const bannerResult = handleCommand('welcome')
-        setOutput([{ command: 'welcome', result: bannerResult as string[]}])
+        const bannerResult = handleCommand('banner')
+        setOutput([{ command: null, result: bannerResult as string[]}])
     }, []);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
