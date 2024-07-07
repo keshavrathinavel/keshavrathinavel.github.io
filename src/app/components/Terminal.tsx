@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import handleCommand from "@/lib/handleCommand";
 import { TypeAnimation } from "react-type-animation";
 
@@ -14,10 +14,11 @@ export default function Terminal() {
     const [output, setOutput] = useState<CommandOutput[]>([])
     const [currentLineIndex, setCurrentLineIndex] = useState<number>(0)
     const [currentOutputIndex, setCurrentOutputIndex] = useState<number>(0)
+    const terminalEndRef = React.useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const bannerResult = handleCommand('banner')
-        setOutput([{ command: null, result: bannerResult as string[]}])
+        setOutput([{command: null, result: bannerResult as string[]}])
     }, []);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -35,6 +36,10 @@ export default function Terminal() {
         setOutput((prevOutput) => [...prevOutput, {command: input, result}])
         setInput('')
     }
+
+    useEffect(() => {
+        terminalEndRef.current?.scrollIntoView({ behavior: 'auto' })
+    }, [output, currentLineIndex])
 
     useEffect(() => {
         if (currentOutputIndex < output.length) {
@@ -84,20 +89,22 @@ export default function Terminal() {
                         <span className='text-pink-300 font-semibold'><span
                             className='text-green-300'>~</span> learn@about.keshav$ <span
                             className='text-white font-normal'>{output.command}</span></span>
-                        <div className='px-4 py-2'>
+                        <div className='px-4 py-2' ref={terminalEndRef}>
                             <pre>{renderResult(output.result, index)}</pre>
                         </div>
                     </div>
                 ))}
             </div>
-            <form onSubmit={handleSubmit}>
-                <span className='text-pink-300 font-semibold'><span className='text-green-300'>~</span> learn@about.keshav$ </span>
-                <input type='text'
-                       className='bg-transparent focus:outline-none text-white caret-green-300'
-                       value={input}
-                       onChange={(e) => setInput(e.target.value)}
-                       autoFocus/>
-            </form>
+            <div>
+                <form onSubmit={handleSubmit}>
+                    <span className='text-pink-300 font-semibold'><span className='text-green-300'>~</span> learn@about.keshav$ </span>
+                    <input type='text'
+                           className='bg-transparent focus:outline-none text-white caret-green-300'
+                           value={input}
+                           onChange={(e) => setInput(e.target.value)}
+                           autoFocus/>
+                </form>
+            </div>
         </div>
     )
 }

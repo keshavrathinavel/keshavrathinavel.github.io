@@ -17,6 +17,7 @@
 body {
     color: rgb(var(--foreground-rgb));
     background-color: #1f1f29;
+    overflow: auto;
 }
 
 @layer utilities {
