@@ -3,6 +3,7 @@ import about from "@/lib/commands/about";
 import banner from "@/lib/commands/banner";
 import papers from "@/lib/commands/papers";
 import hobbies from "@/lib/commands/hobbies";
+import skills from "@/lib/commands/skills";
 
 
 export default function handleCommand(command: string): string[] | null | Map<string, string> {
@@ -17,6 +18,8 @@ export default function handleCommand(command: string): string[] | null | Map<st
             return banner()
         case 'papers':
             return papers()
+        case 'skills':
+            return skills()
         case 'hobbies':
             return hobbies()
         default:
