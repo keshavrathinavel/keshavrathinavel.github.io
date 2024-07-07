@@ -23,7 +23,7 @@ export default function Terminal() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const result = handleCommand(input)
+        const result = handleCommand(input.toLowerCase())
 
         if (result === null) {
             setInput('')
@@ -38,7 +38,7 @@ export default function Terminal() {
     }
 
     useEffect(() => {
-        terminalEndRef.current?.scrollIntoView({ behavior: 'auto' })
+        terminalEndRef.current?.scrollIntoView({behavior: 'auto'})
     }, [output, currentLineIndex])
 
     useEffect(() => {
