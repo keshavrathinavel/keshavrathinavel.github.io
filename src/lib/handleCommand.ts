@@ -1,9 +1,11 @@
 import help from "@/lib/commands/help";
 import about from "@/lib/commands/about";
 import banner from "@/lib/commands/banner";
+import papers from "@/lib/commands/papers";
+import hobbies from "@/lib/commands/hobbies";
 
 
-export default function handleCommand(command: string) {
+export default function handleCommand(command: string): string[] | null | Map<string, string> {
     switch (command) {
         case 'help':
             return help()
@@ -13,6 +15,10 @@ export default function handleCommand(command: string) {
             return null
         case 'banner':
             return banner()
+        case 'papers':
+            return papers()
+        case 'hobbies':
+            return hobbies()
         default:
             return ['Hmmm, no idea what that does. Type "help" to see a list of available commands']
     }
