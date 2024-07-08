@@ -73,7 +73,7 @@ export default function Terminal() {
                                     <TypeAnimation sequence={[line]} speed={99} cursor={false}/>
                                 ) : (
                                     <a key={idx} href={line.url} target="_blank" rel="noopener noreferrer"
-                                       className='text-cyan-300 underline'>
+                                       className='text-cyan-200 decoration-0 decoration-white underline'>
                                         <TypeAnimation sequence={[line.text]} speed={99} cursor={false}/>
                                     </a>
                                 )
