@@ -6,7 +6,7 @@ import { TypeAnimation } from "react-type-animation";
 
 interface CommandOutput {
     command: string | null
-    result: string | string[]
+    result: string[] | { text: string, url: string }[]
 }
 
 export default function Terminal() {
@@ -33,7 +33,7 @@ export default function Terminal() {
             return
         }
 
-        setOutput((prevOutput) => [...prevOutput, {command: input, result}])
+        setOutput((prevOutput) => [...prevOutput, {command: input, result} as CommandOutput])
         setInput('')
     }
 
@@ -61,13 +61,23 @@ export default function Terminal() {
         }
     }, [currentLineIndex, currentOutputIndex, output])
 
-    const renderResult = (result: string | string[], outputIndex: number) => {
+
+    const renderResult = (result: string[] | { text: string, url: string }[], outputIndex: number) => {
         if (Array.isArray(result)) {
             return (
                 <div>
                     {result.slice(0, outputIndex === currentOutputIndex ? currentLineIndex : result.length).map((line, idx) => (
                         <div key={idx}>
-                            <TypeAnimation sequence={[line]} speed={99} cursor={false}/>
+                            {typeof line === 'string' ?
+                                (
+                                    <TypeAnimation sequence={[line]} speed={99} cursor={false}/>
+                                ) : (
+                                    <a key={idx} href={line.url} target="_blank" rel="noopener noreferrer"
+                                       className='text-cyan-300 underline'>
+                                        <TypeAnimation sequence={[line.text]} speed={99} cursor={false}/>
+                                    </a>
+                                )
+                            }
                         </div>
                     ))}
                 </div>
