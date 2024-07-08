@@ -7,6 +7,7 @@ import papers from "@/lib/commands/papers";
 import blog from "@/lib/commands/blog";
 import experience from "@/lib/commands/experience";
 import hepl from "@/lib/commands/hepl";
+import code from "@/lib/commands/code.";
 
 export default function handleCommand(command: string): string[] | { text: string, url: string }[] | null {
     switch (command) {
@@ -18,8 +19,6 @@ export default function handleCommand(command: string): string[] | { text: strin
             return about()
         case 'experience':
             return experience()
-        case 'clear':
-            return null
         case 'banner':
             return banner()
         case 'skills':
@@ -30,6 +29,10 @@ export default function handleCommand(command: string): string[] | { text: strin
             return papers()
         case 'blog':
             return blog()
+        case 'code':
+            return code()
+        case 'clear':
+            return null
         default:
             return ['Hmmm, no idea what that does. Type "help" to see a list of available commands']
     }

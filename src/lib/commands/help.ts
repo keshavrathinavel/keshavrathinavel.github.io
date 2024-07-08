@@ -12,6 +12,7 @@ export default function help(): string[] {
         'funfact     I can make accurate f1 car sounds. Want to know more?',
         'banner      Display the banner again',
         'contact     Contact information',
+        'code        Get code for this website',
         'clear       Clear the terminal'
     ]
 }
