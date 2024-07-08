@@ -4,6 +4,7 @@ import banner from "@/lib/commands/banner";
 import hobbies from "@/lib/commands/hobbies";
 import skills from "@/lib/commands/skills";
 import papers from "@/lib/commands/papers";
+import blog from "@/lib/commands/blog";
 
 export default function handleCommand(command: string): string[] | { text: string, url: string }[] | null {
     switch (command) {
@@ -21,6 +22,8 @@ export default function handleCommand(command: string): string[] | { text: strin
             return hobbies()
         case 'papers':
             return papers()
+        case 'blog':
+            return blog()
         default:
             return ['Hmmm, no idea what that does. Type "help" to see a list of available commands']
     }
