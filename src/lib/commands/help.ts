@@ -9,7 +9,6 @@ export default function help(): string[] {
         'blog        List the blog posts I have written',
         'skills      List what I am good at (spoiler: it\'s writing code)',
         'hobbies     What I do when I am not writing code',
-        'funfact     I can make accurate f1 car sounds. Want to know more?',
         'banner      Display the banner again',
         'social      Find my socials',
         'code        Get code for this website',
