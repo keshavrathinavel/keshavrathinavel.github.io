@@ -11,7 +11,7 @@ export default function help(): string[] {
         'hobbies     What I do when I am not writing code',
         'funfact     I can make accurate f1 car sounds. Want to know more?',
         'banner      Display the banner again',
-        'contact     Contact information',
+        'social      Find my socials',
         'code        Get code for this website',
         'clear       Clear the terminal'
     ]
