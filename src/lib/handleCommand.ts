@@ -8,6 +8,7 @@ import blog from "@/lib/commands/blog";
 import experience from "@/lib/commands/experience";
 import hepl from "@/lib/commands/hepl";
 import code from "@/lib/commands/code.";
+import awards from "@/lib/commands/awards";
 
 export default function handleCommand(command: string): string[] | { text: string, url: string }[] | null {
     switch (command) {
@@ -27,6 +28,8 @@ export default function handleCommand(command: string): string[] | { text: strin
             return hobbies()
         case 'papers':
             return papers()
+        case 'awards':
+            return awards()
         case 'blog':
             return blog()
         case 'code':
