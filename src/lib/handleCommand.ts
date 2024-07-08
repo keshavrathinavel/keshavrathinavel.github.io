@@ -5,11 +5,15 @@ import hobbies from "@/lib/commands/hobbies";
 import skills from "@/lib/commands/skills";
 import papers from "@/lib/commands/papers";
 import blog from "@/lib/commands/blog";
+import experience from "@/lib/commands/experience";
+import hepl from "@/lib/commands/hepl";
 
 export default function handleCommand(command: string): string[] | { text: string, url: string }[] | null {
     switch (command) {
         case 'help':
             return help()
+        case 'hepl':
+            return hepl()
         case 'about':
             return about()
         case 'clear':
