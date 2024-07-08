@@ -16,6 +16,8 @@ export default function handleCommand(command: string): string[] | { text: strin
             return hepl()
         case 'about':
             return about()
+        case 'experience':
+            return experience()
         case 'clear':
             return null
         case 'banner':
