@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Red_Hat_Mono } from "next/font/google";
 import "./globals.css";
 import React from "react";
+import { GoogleAnalytics } from "@/app/components/GoogleAnalytics";
 
 const inter = Red_Hat_Mono({ subsets: ["latin"] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleAnalytics />
       <body className={inter.className}>{children}</body>
     </html>
   );
