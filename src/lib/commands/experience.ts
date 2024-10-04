@@ -3,7 +3,7 @@ export default function experience(): string[] {
         'Sahaj AI, Bangalore, India - Full-Stack Developer',
         '➢ Created an in-house solution akin to Hugging Face, providing a comprehensive ecosystem for model management, training and deployment.',
         '➢ Developed capabilities for uploading and inferring machine learning models, easing the deployment process.',
-        '➢ Facilitated model training using cloud computing resources, enhancing scalability and efficiency and knowledge sharing.',
+        '➢ Facilitated model training using cloud computing resources, enhancing scalability and efficiency and knowledge sharing within the user base.',
         '\n',
         'Wipro, Bangalore, India - Machine Learning Engineer',
         '➢ Created ML Pipelines to automate training and monitoring for several learning models.',
