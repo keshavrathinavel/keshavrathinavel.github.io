@@ -22,7 +22,7 @@ jobs:
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9.5.0
+          version: 9.1.1
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
